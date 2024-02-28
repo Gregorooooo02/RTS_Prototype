@@ -84,8 +84,7 @@ public class UnitSelectionManager : MonoBehaviour
 		DeselectAll();
 		
 		unitsSelected.Add(unit);
-		TriggerSelectionIndicator(unit, true);
-		EnableUnitMovement(unit, true);
+		SelectUnit(unit, true);
 	}
 
 	private void MultiSelect(GameObject unit)
@@ -93,23 +92,35 @@ public class UnitSelectionManager : MonoBehaviour
 		if (unitsSelected.Contains(unit) == false)
 		{
 			unitsSelected.Add(unit);
-			TriggerSelectionIndicator(unit, true);
-			EnableUnitMovement(unit, true);
+			SelectUnit(unit, true);
 		}
 		else
 		{
-			TriggerSelectionIndicator(unit, false);
-			EnableUnitMovement(unit, false);
+			SelectUnit(unit, false);
 			unitsSelected.Remove(unit);
 		}
 	}
+
+	internal void DragSelect(GameObject unit)
+	{
+		if (unitsSelected.Contains(unit) == false)
+		{
+			unitsSelected.Add(unit);
+			SelectUnit(unit, true);
+		}
+	}
+
+	private void SelectUnit(GameObject unit, bool isSelected)
+	{
+		TriggerSelectionIndicator(unit, isSelected);
+		EnableUnitMovement(unit, isSelected);
+	}
 	
-	private void DeselectAll()
+	internal void DeselectAll()
 	{
 		foreach (var unit in unitsSelected)
 		{
-			TriggerSelectionIndicator(unit, false);
-			EnableUnitMovement(unit, false);
+			SelectUnit(unit, false);
 		}
 		
 		groundMarker.SetActive(false);
