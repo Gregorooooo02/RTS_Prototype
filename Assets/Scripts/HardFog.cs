@@ -37,7 +37,7 @@ public class HardFog : MonoBehaviour
         return pixelPosition;
     }
 
-    public void MakeHole(Vector2 position, float holeRadius)
+    public void MakeHole(Vector2 position, float holeRadius,bool reset = false)
     {
         Vector2Int pixelPosition = WorldToPixel(position);
         int radius = Mathf.RoundToInt(holeRadius * pixelScale.x / worldScale.x);
@@ -52,10 +52,19 @@ public class HardFog : MonoBehaviour
                 py = Mathf.Clamp(pixelPosition.y + j, 0, pixelScale.y);
                 ny = Mathf.Clamp(pixelPosition.y - j, 0, pixelScale.y);
 
-                fogOfWarTexture.SetPixel(px, py, Color.black);
-                fogOfWarTexture.SetPixel(nx, py, Color.black);
-                fogOfWarTexture.SetPixel(px, ny, Color.black);
-                fogOfWarTexture.SetPixel(nx, ny, Color.black);
+                if (reset)
+                {
+                    fogOfWarTexture.SetPixel(px, py, Color.clear);
+                    fogOfWarTexture.SetPixel(nx, py, Color.clear);
+                    fogOfWarTexture.SetPixel(px, ny, Color.clear);
+                    fogOfWarTexture.SetPixel(nx, ny, Color.clear);
+                } else
+                {
+                    fogOfWarTexture.SetPixel(px, py, Color.black);
+                    fogOfWarTexture.SetPixel(nx, py, Color.black);
+                    fogOfWarTexture.SetPixel(px, ny, Color.black);
+                    fogOfWarTexture.SetPixel(nx, ny, Color.black);
+                }
             }
         }
         fogOfWarTexture.Apply();

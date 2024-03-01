@@ -172,8 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fog: {fileID: 0}
-  onlyCheckOnMove: 1
-  sightRange: 5
+  SecondaryFog: {fileID: 0}
+  onlyCheckOnMove: 0
+  sightRange: 7
   interval: 0.25
 --- !u!1 &5972018206960829101
 GameObject:

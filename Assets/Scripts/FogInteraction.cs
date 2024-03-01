@@ -6,6 +6,7 @@ using UnityEngine;
 public class FogInteraction : MonoBehaviour
 {
     public HardFog Fog;
+    public HardFog SecondaryFog;
 
     public bool onlyCheckOnMove = true;
     public float sightRange;
@@ -17,7 +18,7 @@ public class FogInteraction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Fog.MakeHole(transform.position, sightRange);
+        previousPosition = transform.position;
         StartCoroutine(CheckFog(interval));
     }
 
@@ -28,6 +29,7 @@ public class FogInteraction : MonoBehaviour
             if (!onlyCheckOnMove)
             {
                 Fog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
+                
             } else
             {
                 if (previousPosition != transform.position)
@@ -35,6 +37,8 @@ public class FogInteraction : MonoBehaviour
                     Fog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
                 }
             }
+            SecondaryFog.MakeHole(new Vector2(previousPosition.x, previousPosition.z), sightRange, true);
+            SecondaryFog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
             previousPosition = transform.position;
             yield return new WaitForSeconds(checkInterval);
         }
