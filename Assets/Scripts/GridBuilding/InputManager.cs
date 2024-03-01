@@ -11,7 +11,9 @@ public class InputManager : MonoBehaviour
     private Vector3 lastPosition;
 
     [SerializeField] private LayerMask placementLayermask;
-
+    
+    private bool isBuilding = false;
+    
     public Vector3 getSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -24,5 +26,19 @@ public class InputManager : MonoBehaviour
         }
 
         return lastPosition;
+    }
+
+    public void buildMode()
+    {
+        if(Input.GetKeyUp("b"))
+        {
+            isBuilding = !isBuilding;
+            
+        }
+    }
+
+    public bool getBuildMode()
+    {
+        return isBuilding;
     }
 }
