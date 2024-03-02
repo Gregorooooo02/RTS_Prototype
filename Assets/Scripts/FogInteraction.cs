@@ -6,14 +6,12 @@ using UnityEngine;
 public class FogInteraction : MonoBehaviour
 {
     public HardFog Fog;
-    public HardFog SecondaryFog;
 
     public bool onlyCheckOnMove = true;
     public float sightRange;
     public float interval;
 
-    private Vector3 previousPosition;
-
+    public Vector3 previousPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +35,6 @@ public class FogInteraction : MonoBehaviour
                     Fog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
                 }
             }
-            SecondaryFog.MakeHole(new Vector2(previousPosition.x, previousPosition.z), sightRange, true);
-            SecondaryFog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
-            previousPosition = transform.position;
             yield return new WaitForSeconds(checkInterval);
         }
     }

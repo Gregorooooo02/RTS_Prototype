@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3827257115591792657}
   - component: {fileID: 1440658104363171672}
   - component: {fileID: 7289968577973110952}
-  - component: {fileID: 6571789849936753741}
+  - component: {fileID: 8152837482713596068}
   m_Layer: 0
   m_Name: SecondaryFog
   m_TagString: Untagged
@@ -137,7 +137,7 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
---- !u!114 &6571789849936753741
+--- !u!114 &8152837482713596068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,8 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3446184947845731651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50ecceb557a51747a247f64f74fb1a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 40edcc091ad29134b8cd15e358c871e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  revelers: []
   fogOfWarTexture: {fileID: 2800000, guid: 6d064efa4982e694baa66c94352e1c0e, type: 3}
   spriteMask: {fileID: 7289968577973110952}
+  updateInterval: 0.25
