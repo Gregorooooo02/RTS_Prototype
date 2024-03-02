@@ -171,11 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d06c900e00ebd4eb7488c73e4fe0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fog: {fileID: 0}
-  SecondaryFog: {fileID: 0}
-  onlyCheckOnMove: 0
+  onlyCheckOnMove: 1
   sightRange: 7
   interval: 0.25
+  previousPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &5972018206960829101
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,8 +14,11 @@ public class SoftFog : MonoBehaviour
     private Vector2 worldScale;
     private Vector2Int pixelScale;
 
+    public static SoftFog softFog;
+
     private void Start()
     {
+        softFog = this;
         StartCoroutine(processFog(updateInterval));
     }
 
@@ -38,7 +41,7 @@ public class SoftFog : MonoBehaviour
         Vector2Int pixelPosition = Vector2Int.zero;
 
         float dx = position.x - transform.position.x;
-        float dy = position.y - transform.position.y;
+        float dy = position.y - transform.position.z;
 
         pixelPosition.x = Mathf.RoundToInt(.5f * pixelScale.x + dx * (pixelScale.x / worldScale.x));
         pixelPosition.y = Mathf.RoundToInt(.5f * pixelScale.y + dy * (pixelScale.y / worldScale.y));
@@ -92,12 +95,12 @@ public class SoftFog : MonoBehaviour
         {
             foreach (FogInteraction f in revelers)
             {
-                MakeHole(new Vector2(f.previousPosition.x, f.previousPosition.z), f.sightRange, true);
-                f.previousPosition = f.transform.position;
+                MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange, true);
+                f.previousPositionSoft = f.transform.position;
             }
             foreach (FogInteraction f in revelers)
             {
-                MakeHole(new Vector2(f.previousPosition.x, f.previousPosition.z), f.sightRange);
+                MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange);
             }
             yield return new WaitForSeconds(processInterval);
         }

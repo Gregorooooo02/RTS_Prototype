@@ -10,8 +10,16 @@ public class HardFog : MonoBehaviour
     private Vector2 worldScale;
     private Vector2Int pixelScale;
 
+    public static HardFog hardFog;
+
+    private void Start()
+    {
+        hardFog = this;
+    }
+
     private void Awake()
     {
+        hardFog = this;
         pixelScale.x = fogOfWarTexture.width;
         pixelScale.y = fogOfWarTexture.height;
         worldScale.x = pixelScale.x / 100f  * transform.localScale.x;
@@ -30,7 +38,7 @@ public class HardFog : MonoBehaviour
         Vector2Int pixelPosition = Vector2Int.zero;
 
         float dx = position.x - transform.position.x;
-        float dy = position.y - transform.position.y;
+        float dy = position.y - transform.position.z;
 
         pixelPosition.x = Mathf.RoundToInt(.5f * pixelScale.x + dx * (pixelScale.x / worldScale.x));
         pixelPosition.y = Mathf.RoundToInt(.5f * pixelScale.y + dy * (pixelScale.y / worldScale.y));
