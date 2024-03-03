@@ -24,6 +24,7 @@ public class SoftFog : MonoBehaviour
 
     private void Awake()
     {
+        softFog = this;
         pixelScale.x = fogOfWarTexture.width;
         pixelScale.y = fogOfWarTexture.height;
         worldScale.x = pixelScale.x / 100f * transform.localScale.x;
@@ -46,6 +47,12 @@ public class SoftFog : MonoBehaviour
         pixelPosition.x = Mathf.RoundToInt(.5f * pixelScale.x + dx * (pixelScale.x / worldScale.x));
         pixelPosition.y = Mathf.RoundToInt(.5f * pixelScale.y + dy * (pixelScale.y / worldScale.y));
         return pixelPosition;
+    }
+
+    public bool isVisible(Vector3 position)
+    {
+        Vector2Int pixelPosition = WorldToPixel(new Vector2(position.x, position.z));
+        return fogOfWarTexture.GetPixel(pixelPosition.x,pixelPosition.y).a != 0;
     }
 
     private void MakeHole(Vector2 position, float holeRadius, bool reset = false)
