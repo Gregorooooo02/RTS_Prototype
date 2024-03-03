@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class InputManager : MonoBehaviour
 {
@@ -13,6 +15,18 @@ public class InputManager : MonoBehaviour
     [SerializeField] private LayerMask placementLayermask;
     
     private bool isBuilding = false;
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown("w"))
+    //     {
+    //         OnClicked?.Invoke();
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         OnExit?.Invoke();
+    //     }
+    // }
     
     public Vector3 getSelectedMapPosition()
     {
@@ -40,5 +54,10 @@ public class InputManager : MonoBehaviour
     public bool getBuildMode()
     {
         return isBuilding;
+    }
+    
+    public void setBuildMode(bool a)
+    {
+        isBuilding = a;
     }
 }
