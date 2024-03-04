@@ -14,7 +14,7 @@ public class FogInteraction : MonoBehaviour
 
     void Start()
     {
-        
+        while (SoftFog.softFog == null) { };
         SoftFog.softFog.revelers.Add(this);
         HardFog.hardFog.MakeHole(new Vector2(transform.position.x, transform.position.z), sightRange);
         previousPositionHard = transform.position;

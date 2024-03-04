@@ -6,10 +6,12 @@ public class EnemyVisibilty : MonoBehaviour
 {
     public MeshRenderer mesh;
     public float checkInterval;
+    [SerializeField]private bool fogAffected = true;
 
     void Start()
     {
         mesh = GetComponent<MeshRenderer>();
+        while (SoftFog.softFog == null) { };
         StartCoroutine(checkVisibility(checkInterval));
     }
 
@@ -17,8 +19,11 @@ public class EnemyVisibilty : MonoBehaviour
     {
         while (true)
         {
-            bool result = SoftFog.softFog.isVisible(transform.position);
-            if (mesh.enabled != result) mesh.enabled = result;
+            if (fogAffected)
+            {
+                bool result = SoftFog.softFog.isVisible(transform.position);
+                if (mesh.enabled != result) mesh.enabled = result;
+            }
             yield return new WaitForSeconds(interval);
         }
     }
