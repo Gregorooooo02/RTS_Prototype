@@ -20,6 +20,11 @@ public class JigsawGameManager : MonoBehaviour
     private float width;
     private float height;
     
+    public LayerMask pieceLayer;
+    private GameObject selectedPiece;
+    private bool isDragging;
+    private Vector3 offset;
+    
     /**
      * Start is called before the first frame update
      */
@@ -27,6 +32,7 @@ public class JigsawGameManager : MonoBehaviour
     {
         // Initialize the list of puzzle pieces
         puzzlePieces = new List<Transform>();
+        isDragging = false;
         
         // Calculate the size of each piece
         puzzleDimensions = GetDimensions(jigsawPuzzleImages[0], difficulty);
@@ -40,7 +46,33 @@ public class JigsawGameManager : MonoBehaviour
         // Update the border to fit the chosen puzzle
         UpdateBorder();
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, pieceLayer);
+            
+            if (hit.collider != null)
+            {
+                selectedPiece = hit.collider.gameObject;
+                isDragging = true;
+            }
+        }
+
+        if (isDragging)
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 14));
+            selectedPiece.transform.position = mousePos;
+        }
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+        }
+    }
+
     /**
      * Get the dimensions of the puzzle based on the difficulty and the texture
      */
