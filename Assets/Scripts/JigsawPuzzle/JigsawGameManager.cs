@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class JigsawGameManager : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class JigsawGameManager : MonoBehaviour
         
         // Create the jigsaw pieces from the texture
         CreateJigsawPieces(jigsawPuzzleImages[0]);
+        
+        // Shuffle the pieces
+        ShufflePieces();
+        
+        // Update the border to fit the chosen puzzle
+        UpdateBorder();
     }
     
     /**
@@ -101,5 +108,60 @@ public class JigsawGameManager : MonoBehaviour
                 piece.GetComponent<MeshRenderer>().material.SetTexture("_MainTex", jigsawTexture);
             }
         }
+    }
+
+    /**
+     * Shuffle the pieces
+     */
+    private void ShufflePieces()
+    {
+        // Calculate the visible size of the screen
+        float orthoHeight = Camera.main.fieldOfView / 8.5f;
+        float screenAspect = (float)Screen.width / Screen.height;
+        float orthoWidth = orthoHeight * screenAspect;
+        
+        // Ensure pieces are away for the edges
+        var localScale = gameHolder.localScale;
+        float pieceWidth = width * localScale.x;
+        float pieceHeight = height * localScale.y;
+        
+        orthoWidth -= pieceWidth;
+        orthoHeight -= pieceHeight;
+        
+        // Place each piece in a random location
+        foreach (Transform piece in puzzlePieces)
+        {
+            float x = Random.Range(-orthoWidth, orthoWidth);
+            float y = Random.Range(-orthoHeight, orthoHeight);
+            piece.position = new Vector3(x, y, -1);
+        }
+    }
+
+    /**
+     * Update the border to fit the chosen puzzle
+     */
+    private void UpdateBorder()
+    {
+        LineRenderer lineRenderer = gameHolder.GetComponent<LineRenderer>();
+        
+        // Calculate the size of the border
+        float halfWidth = (width * puzzleDimensions.x) / 2;
+        float halfHeight = (height * puzzleDimensions.y) / 2;
+        
+        // Border behind the pieces
+        float borderZ = 0f;
+        
+        // Set the positions of the border
+        lineRenderer.SetPosition(0, new Vector3(-halfWidth, halfHeight, borderZ));
+        lineRenderer.SetPosition(1, new Vector3(halfWidth, halfHeight, borderZ));
+        lineRenderer.SetPosition(2, new Vector3(halfWidth, -halfHeight, borderZ));
+        lineRenderer.SetPosition(3, new Vector3(-halfWidth, -halfHeight, borderZ));
+        
+        // Set the thickness of the border
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        
+        // Show the border
+        lineRenderer.enabled = true;
     }
 }
