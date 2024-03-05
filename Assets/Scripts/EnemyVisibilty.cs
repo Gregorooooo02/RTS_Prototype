@@ -6,7 +6,6 @@ public class EnemyVisibilty : MonoBehaviour
 {
     public MeshRenderer mesh;
     public float checkInterval;
-    [SerializeField]private bool fogAffected = true;
 
     void Start()
     {
@@ -19,7 +18,7 @@ public class EnemyVisibilty : MonoBehaviour
     {
         while (true)
         {
-            if (fogAffected)
+            if (SoftFog.softFog.isInEffect)
             {
                 bool result = SoftFog.softFog.isVisible(transform.position);
                 if (mesh.enabled != result) mesh.enabled = result;

@@ -16,6 +16,8 @@ public class SoftFog : MonoBehaviour
 
     public static SoftFog softFog;
 
+    public bool isInEffect = true;
+
     private void Start()
     {
         softFog = this;
@@ -100,15 +102,17 @@ public class SoftFog : MonoBehaviour
     {
         while (true)
         {
-            foreach (FogInteraction f in revelers)
-            {
-                MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange, true);
-                f.previousPositionSoft = f.transform.position;
-            }
-            foreach (FogInteraction f in revelers)
-            {
-                MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange);
-            }
+            
+                foreach (FogInteraction f in revelers)
+                {
+                    MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange, true);
+                    f.previousPositionSoft = f.transform.position;
+                }
+                foreach (FogInteraction f in revelers)
+                {
+                    MakeHole(new Vector2(f.previousPositionSoft.x, f.previousPositionSoft.z), f.sightRange);
+                }
+            
             yield return new WaitForSeconds(processInterval);
         }
     }
