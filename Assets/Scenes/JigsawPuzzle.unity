@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jigsawPuzzleImages:
   - {fileID: 2800000, guid: 47bcd8e210d2e43e3af8b007ec0a54c5, type: 3}
-  difficulty: 4
+  difficulty: 3
   piecePrefab: {fileID: 5336306626679423354, guid: bc4c57696a24f45dc86aad5e72ab283f, type: 3}
   gameHolder: {fileID: 1881052872}
   pieceLayer:
