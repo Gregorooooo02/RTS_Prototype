@@ -57,6 +57,8 @@ public class JigsawGameManager : MonoBehaviour
             if (hit.collider != null)
             {
                 selectedPiece = hit.collider.gameObject;
+                offset = selectedPiece.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 14));
+                offset += Vector3.back;
                 isDragging = true;
             }
         }
@@ -64,11 +66,14 @@ public class JigsawGameManager : MonoBehaviour
         if (isDragging)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 14));
+            mousePos += offset;
             selectedPiece.transform.position = mousePos;
         }
         
         if (Input.GetMouseButtonUp(0))
         {
+            selectedPiece.transform.position += Vector3.forward;
+            SnapAndDisableIfCorrect();
             isDragging = false;
         }
     }
@@ -195,5 +200,27 @@ public class JigsawGameManager : MonoBehaviour
         
         // Show the border
         lineRenderer.enabled = true;
+    }
+
+    private void SnapAndDisableIfCorrect()
+    {
+        int pieceIndex = puzzlePieces.IndexOf(selectedPiece.transform);
+        
+        // The coordinates of the piece in the puzzle
+        int col = pieceIndex % puzzleDimensions.x;
+        int row = pieceIndex / puzzleDimensions.x;
+        
+        // The position of the piece in the puzzle
+        Vector2 targetPosition = new((-width * puzzleDimensions.x / 2) + (width * col) + (width/2),
+                                     (-height * puzzleDimensions.y / 2) + (height * row) + (height/2));
+        
+        // Check if we are in the correct position
+        if (Vector2.Distance(selectedPiece.transform.localPosition, targetPosition) < (width / 2))
+        {
+            selectedPiece.transform.localPosition = targetPosition;
+            
+            // Disable the collider so we can't move the piece anymore
+            selectedPiece.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }
