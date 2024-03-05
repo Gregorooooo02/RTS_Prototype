@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+
+    public float damage;
     private void Start()
     {
         UnitSelectionManager.Instance.allUnitsList.Add(gameObject);        
