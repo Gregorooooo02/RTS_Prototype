@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlacementSystem : MonoBehaviour
 {
-   [SerializeField] private GameObject mouseIndicator, cellIndicator, gridShader;
+   [SerializeField] private GameObject mouseIndicator, cellIndicator, gridShader, coursorIndicator;
    
    [SerializeField] private InputManager inputManager;
    
@@ -20,6 +20,12 @@ public class PlacementSystem : MonoBehaviour
    private Renderer previewRenderer;
 
    private List<GameObject> placedGameObjects = new();
+   
+   private Vector3 greenPreviewScale = new Vector3(1.0f, 1.0f, 1.0f);
+   
+   private Vector3 redPreviewScale = new Vector3(1.3f, 1.3f, 1.3f);
+   
+   
    
 
    private void Start()
@@ -55,7 +61,7 @@ public class PlacementSystem : MonoBehaviour
       tempVec.z += 0.5f;
       newObject.transform.position = tempVec;
       placedGameObjects.Add(newObject);
-      GridData selectedData = database.objectsData[this.selectedObjectIndex].ID == 0 ? floorData : buildingData;
+      GridData selectedData = database.objectsData[selectedObjectIndex].ID == 0 ? floorData : buildingData;
       selectedData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID,
          placedGameObjects.Count - 1);
    }
@@ -82,34 +88,55 @@ public class PlacementSystem : MonoBehaviour
 
    private void Update()
    {
-      //TODO
-      //Preview w pętli. Stawia budynek przy nacisnieciu lpm
-      //Dodaj opcje innych budynków
-      //
-      
       Vector3 mousePosition = inputManager.getSelectedMapPosition();
       Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-      
-      // bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-      // previewRenderer.material.color = placementValidity ? Color.green : Color.red;
-      
+
+
+
       // mouseIndicator.transform.position = mousePosition;
       cellIndicator.transform.position = grid.CellToWorld(gridPosition);
       inputManager.buildMode();
       cellIndicator.SetActive(inputManager.getBuildMode());
       // mouseIndicator.SetActive(inputManager.getBuildMode());
       gridShader.SetActive(inputManager.getBuildMode());
-      if (Input.GetKeyDown("t"))
+      if (inputManager.getBuildMode() && selectedObjectIndex != -1)
       {
-         if (inputManager.getBuildMode() == true)
+         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+         if (placementValidity)
          {
-            StartPlacement(0);
+            previewRenderer.material.color = Color.green;
+            coursorIndicator.transform.localScale = greenPreviewScale;
          }
-         
+         else
+         {
+            //change scale of the object
+            coursorIndicator.transform.localScale = redPreviewScale;
+            
+            previewRenderer.material.color = Color.red;
+         }
       }
-      if (Input.GetKeyDown(KeyCode.Escape))
-      {
-         StopPlacement();
+
+
+      if (Input.GetKeyDown("t"))
+         {
+            if (inputManager.getBuildMode() == true)
+            {
+               StartPlacement(0);
+            }
+         }
+
+         if (Input.GetKeyDown("y"))
+         {
+            if (inputManager.getBuildMode() == true)
+            {
+               StartPlacement(1);
+            }
+         }
+
+         if (Input.GetKeyDown(KeyCode.Escape))
+         {
+            StopPlacement();
+         }
       }
-   }
+   
 }
