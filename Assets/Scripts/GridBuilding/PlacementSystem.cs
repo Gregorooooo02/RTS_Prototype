@@ -50,6 +50,10 @@ public class PlacementSystem : MonoBehaviour
 
    private void Update()
    {
+      //TODO
+      //Preview w pętli. Stawia budynek przy nacisnieciu lpm
+      //Dodaj opcje innych budynków
+      //
       
       Vector3 mousePosition = inputManager.getSelectedMapPosition();
       Vector3Int gridPosition = grid.WorldToCell(mousePosition);
