@@ -6,14 +6,28 @@ using UnityEngine;
 public class PlacementSystem : MonoBehaviour
 {
    [SerializeField] private GameObject mouseIndicator, cellIndicator, gridShader;
+   
    [SerializeField] private InputManager inputManager;
+   
    [SerializeField] private Grid grid;
+   
    [SerializeField] private ObjectDatabase database;
+   
+   private GridData floorData, buildingData;
+   
    private int selectedObjectIndex = -1;
+   
+   private Renderer previewRenderer;
+
+   private List<GameObject> placedGameObjects = new();
+   
 
    private void Start()
    {
       StopPlacement();
+      floorData = new();
+      buildingData = new();
+      previewRenderer = cellIndicator.GetComponentInChildren<Renderer>();
    }
 
    private void StopPlacement()
@@ -26,12 +40,30 @@ public class PlacementSystem : MonoBehaviour
    {
       Vector3 mousePosition = inputManager.getSelectedMapPosition();
       Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+
+      bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+      if (placementValidity == false)
+      {
+         Debug.LogError("Place occupied");
+         return;
+      }
+
       GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
       Vector3 tempVec = grid.CellToWorld(gridPosition);
       tempVec.y -= 2.2f;
       tempVec.x += 0.5f;
       tempVec.z += 0.5f;
       newObject.transform.position = tempVec;
+      placedGameObjects.Add(newObject);
+      GridData selectedData = database.objectsData[this.selectedObjectIndex].ID == 0 ? floorData : buildingData;
+      selectedData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID,
+         placedGameObjects.Count - 1);
+   }
+
+   private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
+   {
+      GridData selectedData = database.objectsData[this.selectedObjectIndex].ID == 0 ? floorData : buildingData;
+      return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[this.selectedObjectIndex].Size);
    }
    
    public void StartPlacement(int ID)
@@ -57,6 +89,10 @@ public class PlacementSystem : MonoBehaviour
       
       Vector3 mousePosition = inputManager.getSelectedMapPosition();
       Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+      
+      // bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
+      // previewRenderer.material.color = placementValidity ? Color.green : Color.red;
+      
       // mouseIndicator.transform.position = mousePosition;
       cellIndicator.transform.position = grid.CellToWorld(gridPosition);
       inputManager.buildMode();
