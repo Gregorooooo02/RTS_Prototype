@@ -69,7 +69,7 @@ public class PlacementSystem : MonoBehaviour
    private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
    {
       GridData selectedData = database.objectsData[this.selectedObjectIndex].ID == 0 ? floorData : buildingData;
-      return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[this.selectedObjectIndex].Size);
+      return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[this.selectedObjectIndex].Size); 
    }
    
    public void StartPlacement(int ID)
