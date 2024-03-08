@@ -5,36 +5,12 @@ using UnityEngine;
 public class EnemyLogic : MonoBehaviour
 {
     [SerializeField] float hp;
-    public LayerMask units;
-    public float damageCooldown;
-    private float timeSinceHit = 0;
+    public HumanBehavior behavior;
 
-
-    private void FixedUpdate()
+    public void dealDamage(float amount, Transform source)
     {
-        timeSinceHit += Time.deltaTime;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 7 && timeSinceHit >= damageCooldown) {
-            hp = Mathf.Max(0,hp - other.GetComponent<Unit>().damage);
-            if(hp == 0)
-            {
-                Destroy(gameObject.transform.parent.gameObject);
-            }
-            timeSinceHit = 0;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == 7 && timeSinceHit >= damageCooldown) {
-            hp = Mathf.Max(0, hp - other.GetComponent<Unit>().damage);
-            if (hp == 0)
-            {
-                Destroy(gameObject.transform.parent.gameObject);
-            }
-            timeSinceHit = 0;
-        }
+        hp = Mathf.Max(0, hp - amount);
+        behavior.Alert(source);
+        if (hp == 0) Destroy(gameObject);
     }
 }
