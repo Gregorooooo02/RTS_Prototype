@@ -12,7 +12,7 @@ public class UnitMovement : MonoBehaviour
     private NavMeshAgent agent;
 
     private Transform target;
-    private bool atackMode = false;
+    public bool atackMode = false;
     
     public LayerMask groundLayer;
     public LayerMask enemyLayer;

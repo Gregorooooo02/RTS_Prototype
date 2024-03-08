@@ -141,6 +141,7 @@ public class UnitSelectionManager : MonoBehaviour
 
 	private void TriggerSelectionIndicator(GameObject unit, bool enable)
 	{
+		if (unit == null) Debug.Log("kek");
 		unit.transform.Find("Indicator").gameObject.SetActive(enable);
 	}
 }

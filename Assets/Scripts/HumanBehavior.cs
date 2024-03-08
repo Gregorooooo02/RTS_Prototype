@@ -14,23 +14,23 @@ public class HumanBehavior : MonoBehaviour
     }
 
     [Header("Wandering parameters")]
-    public float minDelay;
-    public float maxDelay;
-    public float minDistance;
-    public float maxDistance;
-    public float wanderingSpeed;
+    [SerializeField] float minDelay;
+    [SerializeField] float maxDelay;
+    [SerializeField] float minDistance;
+    [SerializeField] float maxDistance;
+    [SerializeField] float wanderingSpeed;
 
     [Header("Fleeing parameters")]
-    public float fleeingSpeed;
-    public float checkTime;
-    public float calmingDuration;
+    [SerializeField] float fleeingSpeed;
+    [SerializeField] float checkTime;
+    [SerializeField] float calmingDuration;
 
 
     public HumanStates currentState;
 
     private IEnumerator movement;
     private NavMeshAgent agent;
-    [SerializeField] Transform _source;
+    public Transform _source;
     private float lastAlerted = 0;
 
     
