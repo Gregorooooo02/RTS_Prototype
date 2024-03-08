@@ -13,6 +13,8 @@ public class HumanBehavior : MonoBehaviour
         FLEEING
     }
 
+    public bool AiEnabled = true;
+
     [Header("Wandering parameters")]
     [SerializeField] float minDelay;
     [SerializeField] float maxDelay;
@@ -71,23 +73,30 @@ public class HumanBehavior : MonoBehaviour
     {
         while (true)
         {
-            if(currentState == HumanStates.WANDERING)
+            if (AiEnabled)
             {
-                Vector2 destination = Random.insideUnitCircle * (maxDistance - minDistance);
-                agent.SetDestination(new Vector3(destination.x + minDistance + transform.position.x, 0, destination.y + minDistance + transform.position.z));
-                yield return new WaitForSeconds(Random.value * (maxDelay - minDelay) + minDelay);
-            } 
-            else if(currentState == HumanStates.FLEEING)
-            {
-                if (_source == null)
+                if (currentState == HumanStates.WANDERING)
                 {
-                    currentState = HumanStates.WANDERING;
-                    agent.speed = wanderingSpeed;
-                    continue;
+                    Vector2 destination = Random.insideUnitCircle * (maxDistance - minDistance);
+                    agent.SetDestination(new Vector3(destination.x + minDistance + transform.position.x, 0, destination.y + minDistance + transform.position.z));
+                    yield return new WaitForSeconds(Random.value * (maxDelay - minDelay) + minDelay);
                 }
-                Vector3 moveVector = (transform.position - _source.position).normalized * 20;
-                agent.SetDestination(new Vector3(transform.position.x + moveVector.x,0,transform.position.z + moveVector.z));
-                yield return new WaitForSeconds(checkTime);
+                else if (currentState == HumanStates.FLEEING)
+                {
+                    if (_source == null)
+                    {
+                        currentState = HumanStates.WANDERING;
+                        agent.speed = wanderingSpeed;
+                        continue;
+                    }
+                    Vector3 moveVector = (transform.position - _source.position).normalized * 20;
+                    agent.SetDestination(new Vector3(transform.position.x + moveVector.x, 0, transform.position.z + moveVector.z));
+                    yield return new WaitForSeconds(checkTime);
+                }
+            } 
+            else
+            {
+                yield return new WaitForSeconds(1);
             }
         }
     }

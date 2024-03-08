@@ -8,6 +8,8 @@ using UnityEngine.AI;
 
 public class UnitMovement : MonoBehaviour
 {
+    [SerializeField] float enemySearchRadius;
+
     private Camera camera;
     private NavMeshAgent agent;
 
@@ -50,13 +52,41 @@ public class UnitMovement : MonoBehaviour
     }
     private IEnumerator followTarget(float updateInterval)
     {
-        while (atackMode && target != null)
+        while (atackMode)
         {
-            agent.SetDestination(target.position);
-            yield return new WaitForSeconds(updateInterval);
+            if(target != null)
+            {
+                agent.SetDestination(target.position);
+                yield return new WaitForSeconds(updateInterval);
+            }
+            else
+            {
+                if (searchForNewTarget())
+                {
+                    yield return new WaitForFixedUpdate();
+                } 
+                else
+                {
+                    atackMode = false;
+                }
+            }
         }
-        target = null;
-        atackMode = false;
+    }
+
+    private bool searchForNewTarget()
+    {
+        RaycastHit[]results =  Physics.SphereCastAll(transform.position,enemySearchRadius,Vector3.forward,Mathf.Infinity,enemyLayer);
+        foreach (RaycastHit hit in results)
+        {
+            //'If' statement is here for future aplications XD
+            if (true)
+            {
+                target = hit.transform;
+                target.Find("Indicator").gameObject.SetActive(true);
+                return true;
+            }
+        }
+        return false;
     }
 }
 
