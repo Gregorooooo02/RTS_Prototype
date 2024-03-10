@@ -319,7 +319,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 36500960}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnlockPanelControl, Assembly-CSharp
+        m_MethodName: UnlockBaracks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &36500960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +795,7 @@ GameObject:
   - component: {fileID: 82817999}
   - component: {fileID: 82817998}
   - component: {fileID: 82817997}
+  - component: {fileID: 82818001}
   m_Layer: 5
   m_Name: BuildingUI
   m_TagString: Untagged
@@ -873,6 +886,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &82818001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82817996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4159b89803b40c28d148dca275b918, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockPanel: {fileID: 336074332}
+  unlockBaracks: {fileID: 36500959}
+  unlockHouse1: {fileID: 1053365277}
+  unlockHouse2: {fileID: 947542865}
+  unlockHouse3: {fileID: 1342275006}
+  baracks: {fileID: 1573049875}
+  house1: {fileID: 1978451318}
+  house2: {fileID: 2063731527}
+  house3: {fileID: 1132360657}
 --- !u!1 &93832116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +1989,10 @@ PrefabInstance:
     - target: {fileID: 1275909538635612, guid: 2767c12992d890f44b14f433fe854668, type: 3}
       propertyPath: m_Name
       value: BasicHouse (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275909538635612, guid: 2767c12992d890f44b14f433fe854668, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4422725698349158, guid: 2767c12992d890f44b14f433fe854668, type: 3}
       propertyPath: m_LocalScale.x
@@ -3496,7 +3534,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 947542866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnlockPanelControl, Assembly-CSharp
+        m_MethodName: UnlockHouse2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &947542866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,7 +3642,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: House 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4188,7 +4238,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1053365278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnlockPanelControl, Assembly-CSharp
+        m_MethodName: UnlockHouse1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1053365278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4475,7 +4537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: House 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4680,6 +4742,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4105805283940168, guid: bd1a894f239d58d4dbf63f27e28096bd, type: 3}
   m_PrefabInstance: {fileID: 20850089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1132360657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4209367969346848707, guid: 03504920af3e140ef9803299113536d7, type: 3}
+  m_PrefabInstance: {fileID: 1758300255}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1138340146
 PrefabInstance:
@@ -5164,7 +5231,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342275007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnlockPanelControl, Assembly-CSharp
+        m_MethodName: UnlockHouse3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1342275007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6003,6 +6082,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4252784401376168, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
   m_PrefabInstance: {fileID: 1532081763}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1573049875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8257065342503444483, guid: 1cc93453cd1af41f48fdbfb290c3007d, type: 3}
+  m_PrefabInstance: {fileID: 6031566036744470745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1621408351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6744,7 +6828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: House 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6895,6 +6979,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicHouse (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4209367969346848707, guid: 03504920af3e140ef9803299113536d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6619038732476531469, guid: 03504920af3e140ef9803299113536d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.380997
@@ -7002,7 +7090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Baracks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7452,6 +7540,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4252784401376168, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
   m_PrefabInstance: {fileID: 1967295319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1978451318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4209367969346848707, guid: 03504920af3e140ef9803299113536d7, type: 3}
+  m_PrefabInstance: {fileID: 990625006421454777}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1982975356 stripped
 Transform:
@@ -13149,6 +13242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicHouse
       objectReference: {fileID: 0}
+    - target: {fileID: 4209367969346848707, guid: 03504920af3e140ef9803299113536d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6619038732476531469, guid: 03504920af3e140ef9803299113536d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.888123
@@ -13323,6 +13420,10 @@ PrefabInstance:
     - target: {fileID: 8257065342503444483, guid: 1cc93453cd1af41f48fdbfb290c3007d, type: 3}
       propertyPath: m_Name
       value: Baracks
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257065342503444483, guid: 1cc93453cd1af41f48fdbfb290c3007d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
