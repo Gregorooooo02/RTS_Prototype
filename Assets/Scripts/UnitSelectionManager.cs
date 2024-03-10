@@ -46,7 +46,7 @@ public class UnitSelectionManager : MonoBehaviour
 			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 			
 			// If we are hitting clickable object
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer))
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer,QueryTriggerInteraction.Ignore))
 			{
 				if (Input.GetKey(KeyCode.LeftShift))
 				{
@@ -141,7 +141,9 @@ public class UnitSelectionManager : MonoBehaviour
 
 	private void TriggerSelectionIndicator(GameObject unit, bool enable)
 	{
-		if (unit == null) Debug.Log("kek");
-		unit.transform.Find("Indicator").gameObject.SetActive(enable);
+		//'if' below is for debuging purposes
+		if(unit.transform.Find("Indicator") == null) Debug.Log(unit.name);
+
+        unit.transform.Find("Indicator").gameObject.SetActive(enable);
 	}
 }
