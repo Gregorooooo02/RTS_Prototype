@@ -46,7 +46,7 @@ public class UnitSelectionManager : MonoBehaviour
 			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 			
 			// If we are hitting clickable object
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer,QueryTriggerInteraction.Ignore))
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity, clickableLayer))
 			{
 				if (Input.GetKey(KeyCode.LeftShift))
 				{

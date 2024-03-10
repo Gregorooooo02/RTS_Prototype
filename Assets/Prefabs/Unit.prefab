@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 6851816139936620894}
   - component: {fileID: 4373614249891786794}
   - component: {fileID: 3501908465602529131}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hitzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
