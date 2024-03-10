@@ -8,6 +8,7 @@ public class MissionSelect : MonoBehaviour
 {
     private Camera cam;
     [SerializeField] GameObject missionSelectPanel;
+    [SerializeField] GameObject unlockPanel;
     
     public LayerMask groundLayer;
     
@@ -29,9 +30,11 @@ public class MissionSelect : MonoBehaviour
                 if (hit.collider.gameObject.name == "Bonfire")
                 {
                     missionSelectPanel.SetActive(true);
+                    unlockPanel.SetActive(false);
                 } else if (!EventSystem.current.IsPointerOverGameObject())
                 {
                     missionSelectPanel.SetActive(false);
+                    unlockPanel.SetActive(true);
                 }
             }
         }

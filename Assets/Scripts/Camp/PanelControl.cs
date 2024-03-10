@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class PanelControl : MonoBehaviour
 {
     [SerializeField] public GameObject missionSelectPanel;
+    [SerializeField] public GameObject unlockPanel;
+    
     [SerializeField] public Button exitButton;
     [SerializeField] public Button firstMissionButton;
 
@@ -21,6 +22,7 @@ public class PanelControl : MonoBehaviour
     private void ExitPanel()
     {
         missionSelectPanel.SetActive(false);
+        unlockPanel.SetActive(true);
     }
     
     private void StartFirstMission()
