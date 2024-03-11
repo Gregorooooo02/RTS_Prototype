@@ -206,18 +206,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AiEnabled: 1
   currentState: 2
-  minDelay: 0
-  maxDelay: 0
-  minDistance: 0
-  maxDistance: 0
-  patrolingSpeed: 0
-  moveSpeed: 0
-  searchRadius: 0
-  checkTime: 0
-  calmingDistance: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  minDelay: 1
+  maxDelay: 4
+  distanceToReroute: 1
+  patrolingSpeed: 1.8
+  waypoints: []
+  PatrolType: 0
+  moveSpeed: 3
+  searchRadius: 5
+  checkTime: 1
+  calmingDistance: 15
+  waypointIndex: 0
 --- !u!1 &4126823528741765400
 GameObject:
   m_ObjectHideFlags: 0

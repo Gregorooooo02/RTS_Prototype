@@ -6,12 +6,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Soldier : HumanBehavior
 {
+    private enum patrolType
+    {
+        CIRCLE,
+        RETURN
+    }
+
     [Header("Patroling parameters")]
     [SerializeField] float minDelay;
     [SerializeField] float maxDelay;
-    [SerializeField] float minDistance;
-    [SerializeField] float maxDistance;
+    [SerializeField] float distanceToReroute;
     [SerializeField] float patrolingSpeed;
+    public Transform[] waypoints;
+    [SerializeField] patrolType PatrolType;
 
     [Header("Atacking parameters")]
     [SerializeField] float moveSpeed;
@@ -20,12 +27,21 @@ public class Soldier : HumanBehavior
     [SerializeField] float calmingDistance;
 
     private Transform _target;
-    public LayerMask playerLayer;
+    private LayerMask playerLayer;
+
+    [SerializeField] bool walking = false;
+    private bool switched = false;
+
+
+    [SerializeField] int waypointIndex = 0;
+    private bool backwards = false;
 
     void Start()
     {
         movement = move();
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = patrolingSpeed;
+        StartCoroutine(movement);
     }
 
     private void FixedUpdate()
@@ -38,6 +54,28 @@ public class Soldier : HumanBehavior
                 agent.speed = patrolingSpeed;
                 _target = null;
             }
+        } 
+        else if(currentState == HumanStates.PATROLING && walking)
+        {
+            if (Vector3.Distance(waypoints[waypointIndex].position,transform.position) <= distanceToReroute && !switched)
+            {
+                Invoke("changeWalking", Random.value * (maxDelay - minDelay) + minDelay);
+                switched = true;
+            }
+        }
+    }
+
+    private void changeWalking()
+    {
+        walking = false;
+        switched = false;
+        if (PatrolType == patrolType.CIRCLE)
+        {
+            incrementIndex();
+        }
+        else if (PatrolType == patrolType.RETURN)
+        {
+            incrementIndexLooped();
         }
     }
 
@@ -48,15 +86,26 @@ public class Soldier : HumanBehavior
             currentState = HumanStates.ATACKING;
             _target = source;
             agent.speed = moveSpeed;
-            StopCoroutine(movement);
-            StartCoroutine(movement);
         }
     }
 
     private IEnumerator move()
     {
         //TODO: Implement XD
-        yield return new WaitForSeconds(2);
+        //yield return new WaitForSeconds(2);
+        while (true)
+        {
+            if(currentState == HumanStates.PATROLING)
+            {
+                agent.SetDestination(waypoints[waypointIndex].position);
+                walking = true;
+                yield return new WaitWhile(()=> walking == true);
+            }
+            else if(currentState == HumanStates.ATACKING)
+            {
+                yield return new WaitForSeconds(1);
+            }
+        }
     }
 
     private bool searchForNewTarget()
@@ -72,5 +121,37 @@ public class Soldier : HumanBehavior
             }
         }
         return false;
+    }
+
+    private void incrementIndexLooped()
+    {
+        if (waypointIndex == 0 && backwards)
+        {
+            backwards = false;
+        } 
+        else if(waypointIndex == waypoints.Length - 1 && !backwards)
+        {
+            backwards = true;
+        }
+        if (backwards)
+        {
+            waypointIndex--;
+        }
+        else
+        {
+            waypointIndex++;
+        }
+    }
+
+    private void incrementIndex()
+    {
+        if (waypointIndex == waypoints.Length - 1)
+        {
+            waypointIndex = 0;
+        } 
+        else
+        {
+            waypointIndex++;
+        }
     }
 }
