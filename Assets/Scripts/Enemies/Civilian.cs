@@ -1,20 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
-public class HumanBehavior : MonoBehaviour
+public class Civilian : HumanBehavior
 {
-    public enum HumanStates
-    {
-        WANDERING,
-        FLEEING
-    }
-
-    public bool AiEnabled = true;
-
     [Header("Wandering parameters")]
     [SerializeField] float minDelay;
     [SerializeField] float maxDelay;
@@ -27,15 +17,9 @@ public class HumanBehavior : MonoBehaviour
     [SerializeField] float checkTime;
     [SerializeField] float calmingDuration;
 
-
-    public HumanStates currentState;
-
-    private IEnumerator movement;
-    private NavMeshAgent agent;
     public Transform _source;
     private float lastAlerted = 0;
 
-    
     void Start()
     {
         movement = move();
@@ -56,17 +40,20 @@ public class HumanBehavior : MonoBehaviour
                 agent.speed = wanderingSpeed;
                 _source = null;
             }
-        } 
+        }
     }
-    
-    public void Alert(Transform source)
+
+    public override void Alert(Transform source)
     {
-        lastAlerted = 0;
-        currentState = HumanStates.FLEEING;
-        agent.speed = fleeingSpeed;
-        _source = source;
-        StopCoroutine(movement);
-        StartCoroutine(movement); 
+        if(currentState != HumanStates.FLEEING)
+        {
+            lastAlerted = 0;
+            currentState = HumanStates.FLEEING;
+            agent.speed = fleeingSpeed;
+            _source = source;
+            StopCoroutine(movement);
+            StartCoroutine(movement);
+        }
     }
 
     private IEnumerator move()
@@ -93,7 +80,7 @@ public class HumanBehavior : MonoBehaviour
                     agent.SetDestination(new Vector3(transform.position.x + moveVector.x, 0, transform.position.z + moveVector.z));
                     yield return new WaitForSeconds(checkTime);
                 }
-            } 
+            }
             else
             {
                 yield return new WaitForSeconds(1);

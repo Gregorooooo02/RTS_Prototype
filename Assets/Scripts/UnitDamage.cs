@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnitDamage : MonoBehaviour
 {
+    [SerializeField] double hp;
+    [SerializeField] double armor;
     public float damage;
     public float atackSpeed;
     private float lastAtack = 0;
@@ -20,12 +22,12 @@ public class UnitDamage : MonoBehaviour
         lastAtack += Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(double damage)
     {
-        if(other.gameObject.layer == 8 && lastAtack >= atackSpeed && movement.atackMode)
+        hp -= damage / armor;
+        if(hp <= 0)
         {
-            other.GetComponent<EnemyLogic>().dealDamage(damage, transform.parent);
-            lastAtack = 0;
+            Destroy(gameObject);
         }
     }
 

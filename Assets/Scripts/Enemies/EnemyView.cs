@@ -9,7 +9,7 @@ public class EnemyView : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 7 && behavior.currentState != HumanBehavior.HumanStates.FLEEING)
+        if(other.gameObject.layer == 7)
         {
             behavior.Alert(other.transform);
         }
