@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitSelectionManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class UnitSelectionManager : MonoBehaviour
 	
 	public LayerMask clickableLayer;
 	public LayerMask groundLayer;
+	public LayerMask enemyLayer;
 
 	public GameObject groundMarker;
 	
@@ -69,7 +71,12 @@ public class UnitSelectionManager : MonoBehaviour
 			RaycastHit hit;
 			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+
+			if(Physics.Raycast(ray, out hit,Mathf.Infinity, enemyLayer))
+			{
+                groundMarker.SetActive(false);
+            }
+			else if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
 			{
 				groundMarker.transform.position = hit.point + new Vector3(0, 0.02f, 0);
 				
@@ -134,6 +141,9 @@ public class UnitSelectionManager : MonoBehaviour
 
 	private void TriggerSelectionIndicator(GameObject unit, bool enable)
 	{
-		unit.transform.Find("Indicator").gameObject.SetActive(enable);
+		//'if' below is for debuging purposes
+		if(unit.transform.Find("Indicator") == null) Debug.Log(unit.name);
+
+        unit.transform.Find("Indicator").gameObject.SetActive(enable);
 	}
 }
