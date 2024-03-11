@@ -17,7 +17,7 @@ public class Civilian : HumanBehavior
     [SerializeField] float checkTime;
     [SerializeField] float calmingDuration;
 
-    public Transform _source;
+    private Transform _source;
     private float lastAlerted = 0;
 
     void Start()

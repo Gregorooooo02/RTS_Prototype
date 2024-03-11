@@ -16,7 +16,7 @@ public abstract class HumanBehavior : MonoBehaviour
     }
 
     public bool AiEnabled = true;
-    protected HumanStates currentState;
+    public HumanStates currentState;
 
     protected IEnumerator movement;
     protected NavMeshAgent agent;
