@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 197535026003237514}
   - component: {fileID: 7737054874609631114}
   - component: {fileID: 2078117853132039863}
-  - component: {fileID: 4778031876955713153}
   - component: {fileID: -8417057943005499079}
+  - component: {fileID: 8068224715690058394}
   m_Layer: 0
   m_Name: EnemyStorage
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4778031876955713153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7658312141280535464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc49b3743b8c41439ad915089b7c910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 200
-  armor: 1
 --- !u!65 &-8417057943005499079
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.411445, y: 6.4099965, z: 9.063992}
   m_Center: {x: -0.15099812, y: 2.205002, z: -0.27155542}
+--- !u!114 &8068224715690058394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7658312141280535464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e406320618fe54faeae61688a3413b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  armor: 0
+  _buildingManager: {fileID: 0}

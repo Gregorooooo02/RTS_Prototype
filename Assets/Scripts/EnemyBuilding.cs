@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class EnemyBuilding : MonoBehaviour
 {
-   [SerializeField] double health;
-   [SerializeField] double armor;
-   [SerializeField] private BuildingManager _buildingManager;
+    [SerializeField] double health;
+    [SerializeField] double armor;
+    [SerializeField] private BuildingManager _buildingManager;
     
     void TakeDamage(double damage)
     {

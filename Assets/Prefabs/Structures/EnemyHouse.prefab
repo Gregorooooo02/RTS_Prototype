@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5415565448077660183}
   - component: {fileID: 1431701284703806296}
   - component: {fileID: 6291084984403264096}
-  - component: {fileID: 6016117559233140063}
   - component: {fileID: 4632175884901161998}
+  - component: {fileID: 3269286636828897681}
   m_Layer: 0
   m_Name: EnemyHouse
   m_TagString: Untagged
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6016117559233140063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8007201154534714886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc49b3743b8c41439ad915089b7c910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  armor: 1
 --- !u!65 &4632175884901161998
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 11.935985, y: 10.697996, z: 7.7417607}
   m_Center: {x: -1.084312, y: 4.8431215, z: 0.025018692}
+--- !u!114 &3269286636828897681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007201154534714886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e406320618fe54faeae61688a3413b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  armor: 1
+  _buildingManager: {fileID: 0}
