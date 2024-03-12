@@ -15,6 +15,7 @@ public class EnemyBuilding : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            _buildingManager.allBuildingsList.Remove(gameObject);
         }
     }
 

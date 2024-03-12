@@ -1,13 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MissionGameManager : MonoBehaviour
 {
     [SerializeField] public GameObject soldiers;
     [SerializeField] public BuildingManager buildingManager;
+
+    [SerializeField] public TextMeshProUGUI firstTask;
+    [SerializeField] public TextMeshProUGUI secondTask;
+
+    [SerializeField] public Canvas missionCanvas;
+    [SerializeField] public Canvas endCanvas;
     
     public int numberOfSoldiers;
     public int numberOfBuildings;
@@ -25,24 +34,29 @@ public class MissionGameManager : MonoBehaviour
     {
         numberOfBuildings = buildingManager.allBuildingsList.Count;
         numberOfSoldiers = soldiers.transform.childCount;
-    }
-    
-    public void CheckMissionStatus()
-    {
-        if (numberOfSoldiers == 0)
+
+        firstTask.text = "Destroy buildings: " + numberOfBuildings;
+        secondTask.text = "Eliminate humans: " + numberOfSoldiers;
+        
+        if (numberOfSoldiers <= 0)
         {
-            Debug.Log("Task Complete");
             areSoldiersDead = true;
         }
-        else if (numberOfBuildings == 0)
+        
+        if (numberOfBuildings <= 0)
         {
-            Debug.Log("Task Complete");
             areBuildingsDestroyed = true;
         }
         
-        if (areSoldiersDead && areBuildingsDestroyed)
+        if (areBuildingsDestroyed && areSoldiersDead)
         {
-            Debug.Log("Mission Complete");
+            missionCanvas.gameObject.SetActive(false);
+            endCanvas.gameObject.SetActive(true);
         }
+    }
+    
+    public void OnEndButtonClick()
+    {
+        SceneManager.LoadScene("CampScene", LoadSceneMode.Single);
     }
 }
