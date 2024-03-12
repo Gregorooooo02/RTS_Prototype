@@ -41,6 +41,7 @@ public class Soldier : HumanBehavior
         movement = move();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = patrolingSpeed;
+        playerLayer = LayerMask.GetMask("Clickable");
         StartCoroutine(movement);
     }
 
@@ -84,6 +85,7 @@ public class Soldier : HumanBehavior
         if(currentState != HumanStates.ATACKING)
         {
             currentState = HumanStates.ATACKING;
+            walking = false;
             _target = source;
             agent.speed = moveSpeed;
         }
@@ -103,7 +105,17 @@ public class Soldier : HumanBehavior
             }
             else if(currentState == HumanStates.ATACKING)
             {
-                yield return new WaitForSeconds(1);
+                if(_target == null)
+                {
+                    if (!searchForNewTarget())
+                    {
+                        currentState = HumanStates.PATROLING;
+                    }
+                } else
+                {
+                    agent.SetDestination(_target.position);
+                }
+                yield return new WaitForSeconds(checkTime);
             }
         }
     }
