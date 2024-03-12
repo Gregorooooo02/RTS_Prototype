@@ -24,6 +24,9 @@ public class JigsawGameManager : MonoBehaviour
     private GameObject selectedPiece;
     private bool isDragging;
     private Vector3 offset;
+
+    private int piecesCorrect;
+    public static bool isPuzzleCompleted;
     
     /**
      * Start is called before the first frame update
@@ -45,6 +48,10 @@ public class JigsawGameManager : MonoBehaviour
         
         // Update the border to fit the chosen puzzle
         UpdateBorder();
+        
+        piecesCorrect = 0;
+        
+        isPuzzleCompleted = false;
     }
 
     private void Update()
@@ -170,7 +177,7 @@ public class JigsawGameManager : MonoBehaviour
         {
             float x = Random.Range(-orthoWidth, orthoWidth);
             float y = Random.Range(-orthoHeight, orthoHeight);
-            piece.position = new Vector3(x, y, -1);
+            piece.position = new Vector3(x + 175, y + 22, -1 + 136);
         }
     }
 
@@ -221,6 +228,17 @@ public class JigsawGameManager : MonoBehaviour
             
             // Disable the collider so we can't move the piece anymore
             selectedPiece.GetComponent<BoxCollider2D>().enabled = false;
+            
+            // Increment the number of correct pieces
+            piecesCorrect++;
+            
+            // Check if the puzzle is complete
+            if (piecesCorrect == puzzlePieces.Count)
+            {
+                Debug.Log("Puzzle complete!");
+                isPuzzleCompleted = true;
+                ShowPuzzleControl.isPuzzleActive = false;
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ public class UnlockPanelControl : MonoBehaviour
         unlockHouse3.onClick.AddListener(UnlockHouse3);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!unlockBaracks.IsActive() && !unlockHouse1.IsActive() && !unlockHouse2.IsActive() && !unlockHouse3.IsActive())
         {

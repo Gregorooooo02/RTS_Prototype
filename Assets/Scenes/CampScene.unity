@@ -1667,37 +1667,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4252784401376168, guid: 22a3fd8d3e59a1149bdcd775c0e87241, type: 3}
   m_PrefabInstance: {fileID: 320924129}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &325997408
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 325997409}
-  m_Layer: 0
-  m_Name: Puzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &325997409
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325997408}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 187.83833, y: 0.13198489, z: 149.38322}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &333556927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3990,7 +3959,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984158391}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9391f380912af4836b7bbbda4c55c4a6, type: 3}
   m_Name: 
@@ -6138,6 +6107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1594577367}
+  - component: {fileID: 1594577368}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6160,6 +6130,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594577368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594577366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81675cb1bd20d448cabb194de2f934d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockPanel: {fileID: 336074332}
+  puzzle: {fileID: 4687369097123040471, guid: c4b742797de7041259252a444651bc15, type: 3}
+  puzzleGameManager: {fileID: 0}
+  unlockBaracks: {fileID: 36500959}
+  unlockHouse1: {fileID: 1053365277}
+  unlockHouse2: {fileID: 947542865}
+  unlockHouse3: {fileID: 1342275006}
 --- !u!1001 &1621408351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13657,5 +13646,4 @@ SceneRoots:
   - {fileID: 1489511117}
   - {fileID: 2043536725}
   - {fileID: 82818000}
-  - {fileID: 325997409}
   - {fileID: 1594577367}
