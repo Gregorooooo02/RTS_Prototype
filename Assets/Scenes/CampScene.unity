@@ -941,10 +941,10 @@ RectTransform:
   - {fileID: 1171329641}
   m_Father: {fileID: 1631346545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165, y: 180}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -610, y: 618.45}
+  m_SizeDelta: {x: -2180, y: -1696.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93832118
 MonoBehaviour:
@@ -1741,6 +1741,7 @@ GameObject:
   - component: {fileID: 336074336}
   - component: {fileID: 336074335}
   - component: {fileID: 336074334}
+  - component: {fileID: 336074337}
   m_Layer: 5
   m_Name: UnlockPanel
   m_TagString: Untagged
@@ -1768,7 +1769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: -1500}
+  m_AnchoredPosition: {x: 0, y: -800}
   m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &336074334
@@ -1784,7 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
+    m_Left: 500
     m_Right: 10
     m_Top: 40
     m_Bottom: 0
@@ -1792,9 +1793,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 200, y: 50}
-  m_Spacing: {x: 55, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Spacing: {x: 100, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!114 &336074335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,6 +1834,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336074332}
   m_CullTransparentMesh: 1
+--- !u!114 &336074337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336074332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 1
+  m_AspectRatio: 5
 --- !u!4 &339723443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4105805283940168, guid: bd1a894f239d58d4dbf63f27e28096bd, type: 3}
@@ -2728,6 +2743,7 @@ GameObject:
   - component: {fileID: 630213816}
   - component: {fileID: 630213818}
   - component: {fileID: 630213817}
+  - component: {fileID: 630213819}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -2752,7 +2768,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -600, y: -200}
+  m_SizeDelta: {x: -884, y: -400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630213817
 MonoBehaviour:
@@ -2792,6 +2808,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630213815}
   m_CullTransparentMesh: 1
+--- !u!114 &630213819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630213815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 2
+  m_AspectRatio: 1
 --- !u!4 &636234070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4548539680920072, guid: 6fc2010b5899cfd488a0ddf205679e2b, type: 3}
@@ -4900,8 +4930,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6144,7 +6174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlockPanel: {fileID: 336074332}
   puzzle: {fileID: 4687369097123040471, guid: c4b742797de7041259252a444651bc15, type: 3}
-  puzzleGameManager: {fileID: 0}
+  copy: {fileID: 0}
   unlockBaracks: {fileID: 36500959}
   unlockHouse1: {fileID: 1053365277}
   unlockHouse2: {fileID: 947542865}
@@ -6416,8 +6446,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7263,10 +7293,10 @@ RectTransform:
   - {fileID: 1635786809}
   m_Father: {fileID: 1631346545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 160, y: 29}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -1600, y: -1600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1815623154
 MonoBehaviour:
