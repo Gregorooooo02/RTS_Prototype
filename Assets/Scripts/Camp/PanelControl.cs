@@ -28,6 +28,6 @@ public class PanelControl : MonoBehaviour
     private void StartFirstMission()
     {
         Debug.Log("Starting first mission");
-        SceneManager.LoadScene("TestMission", LoadSceneMode.Single);
+        SceneManager.LoadScene("Mission", LoadSceneMode.Single);
     }
 }
