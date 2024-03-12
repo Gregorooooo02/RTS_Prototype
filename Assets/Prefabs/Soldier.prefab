@@ -216,6 +216,7 @@ MonoBehaviour:
   searchRadius: 5
   checkTime: 1
   calmingDistance: 15
+  walking: 0
   waypointIndex: 0
 --- !u!1 &4126823528741765400
 GameObject:
@@ -227,9 +228,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7085391041226591780}
   - component: {fileID: 4160625784033160565}
-  - component: {fileID: 889638776603096193}
   - component: {fileID: 3217775734489947679}
   - component: {fileID: 3223141211771092976}
+  - component: {fileID: 919898737347635232}
   m_Layer: 0
   m_Name: FieldOfView
   m_TagString: Untagged
@@ -273,19 +274,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &889638776603096193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4126823528741765400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3913c140ea9efda40ad7da7d3ee4d2a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  behavior: {fileID: 5627551306589597313}
 --- !u!33 &3217775734489947679
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -336,6 +324,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &919898737347635232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126823528741765400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be79bf1eb56e440e191b275c341a0a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behavior: {fileID: 5627551306589597313}
 --- !u!1 &6828086040959386272
 GameObject:
   m_ObjectHideFlags: 0
