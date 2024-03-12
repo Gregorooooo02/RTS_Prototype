@@ -9,7 +9,7 @@ public class EnemyBuilding : MonoBehaviour
     [SerializeField] double armor;
     [SerializeField] private BuildingManager _buildingManager;
     
-    void TakeDamage(double damage)
+    public void TakeDamage(double damage)
     {
         health -= damage / armor;
         if (health <= 0)

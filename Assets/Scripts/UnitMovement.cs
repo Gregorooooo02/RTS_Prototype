@@ -19,9 +19,13 @@ public class UnitMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask enemyLayer;
 
+    private IEnumerator atackSequance;
+
     private void Start()
     {
         camera = Camera.main;
+        enemyLayer = LayerMask.GetMask("Enemy","EnemyBuildings");
+        atackSequance = followTarget(0.5f);
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -37,6 +41,7 @@ public class UnitMovement : MonoBehaviour
             {
                 if (target != null) { target.Find("Indicator").gameObject.SetActive(false); }
                 target = hit.collider.transform;
+                Debug.Log(target.name);
                 target.Find("Indicator").gameObject.SetActive(true);
                 atackMode = true;
                 StartCoroutine(followTarget(0.5f));

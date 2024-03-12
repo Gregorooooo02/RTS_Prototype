@@ -20,21 +20,20 @@ public class UnitDamage : MonoBehaviour
         lastAtack += Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 8 && lastAtack >= atackSpeed && movement.atackMode)
-        {
-            other.GetComponent<EnemyLogic>().dealDamage(damage, transform.parent);
-            lastAtack = 0;
-        }
-    }
-
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == 8 && lastAtack >= atackSpeed && movement.atackMode)
+        if(lastAtack >= atackSpeed && movement.atackMode)
         {
-            other.GetComponent<EnemyLogic>().dealDamage(damage,transform.parent);
-            lastAtack = 0;
-        }
+            if (other.gameObject.layer == 8)
+            {
+                other.GetComponent<EnemyLogic>().dealDamage(damage, transform.parent);
+                lastAtack = 0;
+            }
+            else if(other.gameObject.layer == 10)
+            {
+                other.GetComponent<EnemyBuilding>().TakeDamage(damage);
+                lastAtack = 0;
+            }
+        }  
     }
 }

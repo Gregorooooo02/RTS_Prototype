@@ -22,6 +22,11 @@ public class FogInteraction : MonoBehaviour
         StartCoroutine(CheckFog(interval));
     }
 
+    private void OnDestroy()
+    {
+        SoftFog.softFog.revelers.Remove(this);
+    }
+
     private IEnumerator CheckFog(float checkInterval)
     {
         while (true)
