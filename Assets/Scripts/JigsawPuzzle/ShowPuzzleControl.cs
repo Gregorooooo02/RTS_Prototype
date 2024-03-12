@@ -17,6 +17,8 @@ public class ShowPuzzleControl : MonoBehaviour
     [SerializeField] public Button unlockHouse3;
     
     public static bool isPuzzleActive;
+    
+    [SerializeField] public GameObject missionSelector;
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class ShowPuzzleControl : MonoBehaviour
         else if (!isPuzzleActive && JigsawGameManager.isPuzzleCompleted)
         {
             unlockPanel.SetActive(true);
+            missionSelector.GetComponent<MissionSelect>().enabled = true;
             Destroy(copy);
         }
     }
@@ -43,5 +46,7 @@ public class ShowPuzzleControl : MonoBehaviour
     {
         isPuzzleActive = true;
         copy = Instantiate(puzzle);
+
+        missionSelector.GetComponent<MissionSelect>().enabled = false;
     }
 }
