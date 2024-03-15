@@ -10,7 +10,7 @@ public class EnemyView : MonoBehaviour
     {
         if(other.gameObject.layer == 7)
         {
-            behavior.Alert(other.transform);
+            if(!other.GetComponent<GrassHiding>().isHidden) behavior.Alert(other.transform);
         }
     }
 }
