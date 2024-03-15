@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 30
   armor: 1
+  dmgTime: 0.15
+  damaged: {fileID: 2100000, guid: 46a62e1b335a7f14c92c075c02944cbd, type: 2}
 --- !u!114 &3288751827063783328
 MonoBehaviour:
   m_ObjectHideFlags: 0
