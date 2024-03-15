@@ -122,6 +122,7 @@ MonoBehaviour:
   health: 200
   armor: 1
   _buildingManager: {fileID: 0}
+  particles: {fileID: 5064452561692567004, guid: c62ba0d5f8bcc2442a85f2924c7b4493, type: 3}
 --- !u!1 &9019580957234908955
 GameObject:
   m_ObjectHideFlags: 0

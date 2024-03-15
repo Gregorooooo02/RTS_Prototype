@@ -424,7 +424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 20
+  attentionBar: {fileID: 0}
   behavior: {fileID: 6753965243202763682}
+  dmgTime: 0.15
+  normal: {fileID: 2100000, guid: 0eaa866c9466b874ba5cbe1147a41910, type: 2}
+  damaged: {fileID: 2100000, guid: cb9856745c1c9614eb480288624f0ba8, type: 2}
+  mesh: {fileID: 0}
 --- !u!114 &1004282577971608602
 MonoBehaviour:
   m_ObjectHideFlags: 0
