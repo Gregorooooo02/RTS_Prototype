@@ -178,7 +178,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412205051391271920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -409,8 +409,8 @@ MonoBehaviour:
   maxDistance: 20
   wanderingSpeed: 10
   fleeingSpeed: 15
-  checkTime: 10
-  calmingDuration: 10
+  checkTime: 0.5
+  calmingDuration: 8
 --- !u!114 &8542331731711575072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 20
+  attentionBar: {fileID: 0}
   behavior: {fileID: 6753965243202763682}
 --- !u!114 &1004282577971608602
 MonoBehaviour:
