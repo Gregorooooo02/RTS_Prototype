@@ -14,6 +14,7 @@ public class MissionGameManager : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI firstTask;
     [SerializeField] public TextMeshProUGUI secondTask;
+    [SerializeField] public TextMeshProUGUI puzzleCount;
 
     [SerializeField] public Canvas missionCanvas;
     [SerializeField] public Canvas endCanvas;
@@ -37,6 +38,7 @@ public class MissionGameManager : MonoBehaviour
 
         firstTask.text = "Destroy buildings: " + numberOfBuildings;
         secondTask.text = "Eliminate humans: " + numberOfSoldiers;
+        puzzleCount.text = "Puzzle count: " + PuzzleCollector.puzzleCount + "/9";
         
         if (numberOfSoldiers <= 0)
         {

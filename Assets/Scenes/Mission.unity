@@ -45927,6 +45927,7 @@ MonoBehaviour:
   buildingManager: {fileID: 1011189178}
   firstTask: {fileID: 1654947010}
   secondTask: {fileID: 1398685750}
+  puzzleCount: {fileID: 1763780334}
   missionCanvas: {fileID: 139641512}
   endCanvas: {fileID: 2095381652}
   numberOfSoldiers: 0
