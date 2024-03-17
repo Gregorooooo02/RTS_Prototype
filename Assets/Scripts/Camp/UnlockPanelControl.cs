@@ -32,9 +32,18 @@ public class UnlockPanelControl : MonoBehaviour
 
     private void Update()
     {
-        if (!unlockBaracks.IsActive() && !unlockHouse1.IsActive() && !unlockHouse2.IsActive() && !unlockHouse3.IsActive())
+        if (PuzzleCollector.puzzleCount >= 9)
+        {
+            unlockPanel.SetActive(true);
+        }
+        else
         {
             unlockPanel.SetActive(false);
+        }
+        
+        if (!unlockBaracks.IsActive() && !unlockHouse1.IsActive() && !unlockHouse2.IsActive() && !unlockHouse3.IsActive())
+        {
+            unlockPanel.SetActive(false);    
         }
     }
 
@@ -43,6 +52,8 @@ public class UnlockPanelControl : MonoBehaviour
         Debug.Log("Unlocking baracks");
         baracks.SetActive(true);
         unlockBaracks.gameObject.SetActive(false);
+        
+        PuzzleCollector.ResetPuzzle();
     }
     
     public void UnlockHouse1()
@@ -50,6 +61,8 @@ public class UnlockPanelControl : MonoBehaviour
         Debug.Log("Unlocking house 1");
         house1.SetActive(true);
         unlockHouse1.gameObject.SetActive(false);
+        
+        PuzzleCollector.ResetPuzzle();
     }
     
     public void UnlockHouse2()
@@ -57,6 +70,8 @@ public class UnlockPanelControl : MonoBehaviour
         Debug.Log("Unlocking house 2");
         house2.SetActive(true);
         unlockHouse2.gameObject.SetActive(false);
+        
+        PuzzleCollector.ResetPuzzle();
     }
     
     public void UnlockHouse3()
@@ -64,5 +79,7 @@ public class UnlockPanelControl : MonoBehaviour
         Debug.Log("Unlocking house 3");
         house3.SetActive(true);
         unlockHouse3.gameObject.SetActive(false);
+        
+        PuzzleCollector.ResetPuzzle();
     }
 }

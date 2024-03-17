@@ -10,7 +10,7 @@ public class PuzzleCollector : MonoBehaviour
     
     private void Start()
     {
-        puzzleCount = 0;
+        puzzleCount = 9;
         if (instance == null)
         {
             instance = this;
@@ -30,6 +30,5 @@ public class PuzzleCollector : MonoBehaviour
     public static void ResetPuzzle()
     {
         puzzleCount = 0;
-        
     }
 }
