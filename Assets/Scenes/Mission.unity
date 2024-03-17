@@ -38680,6 +38680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHouse (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9019580957234908955, guid: d359f9ca8ec32294884264cae9df2ec0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60161,22 +60165,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1448056471}
     m_Modifications:
-    - target: {fileID: -8417057943005499079, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 197535026003237514, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.5129106
-      objectReference: {fileID: 0}
-    - target: {fileID: 197535026003237514, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.5129104
-      objectReference: {fileID: 0}
-    - target: {fileID: 197535026003237514, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.5129106
-      objectReference: {fileID: 0}
     - target: {fileID: 197535026003237514, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
       propertyPath: m_LocalPosition.x
       value: -419.9373
@@ -60222,19 +60210,10 @@ PrefabInstance:
       value: EnemyStorage
       objectReference: {fileID: 0}
     - target: {fileID: 8068224715690058394, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: armor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068224715690058394, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068224715690058394, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
       propertyPath: _buildingManager
       value: 
       objectReference: {fileID: 1011189178}
-    m_RemovedComponents:
-    - {fileID: 4778031876955713153, guid: 6508e982f7b39694cb02334210d3a219, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -8,7 +8,7 @@ public class PuzzleCollector : MonoBehaviour
     private static PuzzleCollector instance;
     public static int puzzleCount;
     
-    private void Start()
+    private void Awake()
     {
         puzzleCount = 9;
         if (instance == null)
