@@ -167,8 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab3170b4e07249e7934a866845b7cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHp: 0
   hp: 30
   armor: 1
+  healthBarUI: {fileID: 0}
+  healthBar: {fileID: 0}
   dmgTime: 0.15
   damaged: {fileID: 2100000, guid: 46a62e1b335a7f14c92c075c02944cbd, type: 2}
 --- !u!114 &3288751827063783328
