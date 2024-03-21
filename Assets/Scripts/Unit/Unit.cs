@@ -12,10 +12,16 @@ public class Unit : MonoBehaviour
 
     public GameObject healthBarUI;
     public Slider healthBar;
+    
+    [SerializeField] float dmgTime;
+    private Material normal;
+    [SerializeField] Material damaged;
+    private MeshRenderer mesh;
 
     private void Start()
     {
         hp = maxHp;
+        mesh = GetComponent<MeshRenderer>();
         UnitSelectionManager.Instance.allUnitsList.Add(gameObject);  
         healthBarUI.SetActive(false);
         healthBar.value = CalculateHealth();
