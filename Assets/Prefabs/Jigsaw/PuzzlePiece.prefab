@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2841397775057208622}
   - component: {fileID: 3909715513035239347}
   - component: {fileID: 6752410961323624787}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: PuzzlePiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
