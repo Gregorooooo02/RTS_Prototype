@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Grass
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: f0900829b2cd3474fb509a421381332c, type: 2}
+  m_Parent: {fileID: 2100000, guid: f2152f2d06efc4059b73113cf30c1ceb, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,6 +25,5 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.21751694, g: 0.3584906, b: 0.19784622, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []

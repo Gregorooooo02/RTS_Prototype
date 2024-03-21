@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 210.82, y: 0.5, z: 200}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1032771003017408448}
@@ -214,12 +214,15 @@ MonoBehaviour:
   minDelay: 1
   maxDelay: 4
   distanceToReroute: 1
-  patrolingSpeed: 1.8
-  waypoints: []
+  patrolingSpeed: 5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   PatrolType: 0
-  moveSpeed: 3
-  searchRadius: 5
-  checkTime: 1
+  moveSpeed: 10
+  searchRadius: 10
+  checkTime: 0.2
   calmingDistance: 15
   walking: 0
   waypointIndex: 0
@@ -294,7 +297,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4126823528741765400}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
